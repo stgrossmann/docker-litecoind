@@ -17,7 +17,7 @@ RUN set -ex \
   && tar -xzvf litecoin-${LTC_VERSION}.tar.gz -C /usr/local --strip-components=1 --exclude=*-qt \
   && rm -rf /tmp/*
 
-RUN groupadd -g 1000 litecoin && useradd -u 1000 -G litecoin -s /bin/sh -D litecoin
+RUN groupadd -g 1000 litecoin && useradd -m -u 1000 -g litecoin -s /bin/sh litecoin
 
 USER litecoin
 
