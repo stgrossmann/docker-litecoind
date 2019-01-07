@@ -17,17 +17,14 @@ RUN set -ex \
   && tar -xzvf litecoin-${LTC_VERSION}.tar.gz -C /usr/local --strip-components=1 --exclude=*-qt \
   && rm -rf /tmp/*
 
-RUN groupadd -r -g 555 litecoin && useradd -r -m -u 555 -g litecoin litecoin
-ENV DATADIR /data
+RUN groupadd -g 1000 litecoin && useradd -u 1000 -G litecoin -s /bin/sh -D litecoin
 
-RUN mkdir "$DATADIR" \
-  && chown -R 555:555 "$DATADIR" \
-  && ln -sfn "$DATADIR" /home/litecoin/.litecoin \
-  && chown -h 555:555 /home/litecoin/.litecoin
+USER litecoin
 
-VOLUME /data
+RUN mkdir -p /home/litecoin/.litecoin
+
+VOLUME /home/litecoin/.litecoin
 
 EXPOSE 9333 19335
 
-USER 555:555
 ENTRYPOINT ["litecoind"]
