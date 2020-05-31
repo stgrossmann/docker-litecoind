@@ -6,9 +6,9 @@ RUN set -ex \
   && apt-get install -qq --no-install-recommends dirmngr ca-certificates wget \
   && rm -rf /var/lib/apt/lists/*
 
-ARG LTC_VERSION=0.16.3
-ARG LTC_URL=https://download.litecoin.org/litecoin-0.16.3/linux/litecoin-0.16.3-x86_64-linux-gnu.tar.gz
-ARG LTC_SHA256=686d99d1746528648c2c54a1363d046436fd172beadaceea80bdc93043805994
+ARG LTC_VERSION=0.17.1
+ARG LTC_URL=https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-x86_64-linux-gnu.tar.gz
+ARG LTC_SHA256=9cab11ba75ea4fb64474d4fea5c5b6851f9a25fe9b1d4f7fc9c12b9f190fed07
 
 RUN set -ex \
   && cd /tmp \
